@@ -1,0 +1,2460 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "backend-controlgastos",
+        "version": "0.0.1",
+        "description": "backend-controlgastos",
+        "contact": {}
+    },
+    "paths": {
+        "/gastos/count": {
+            "get": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "count",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gasto model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Gasto.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Gasto>"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "GastoController.count"
+            }
+        },
+        "/gastos/{id}/usuario": {
+            "get": {
+                "x-controller-name": "GastoUsuarioController",
+                "x-operation-name": "getUsuario",
+                "tags": [
+                    "GastoUsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario belonging to Gasto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Usuario"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "GastoUsuarioController.getUsuario"
+            }
+        },
+        "/gastos/{id}": {
+            "put": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Gasto PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gasto"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "GastoController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Gasto PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GastoPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "GastoController.updateById"
+            },
+            "get": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gasto model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GastoWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gasto.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "GastoController.findById"
+            },
+            "delete": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Gasto DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "GastoController.deleteById"
+            }
+        },
+        "/gastos": {
+            "post": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "create",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gasto model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gasto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewGasto"
+                            }
+                        }
+                    }
+                },
+                "operationId": "GastoController.create"
+            },
+            "patch": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Gasto PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Gasto.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Gasto>"
+                            }
+                        }
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GastoPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "GastoController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "GastoController",
+                "x-operation-name": "find",
+                "tags": [
+                    "GastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Gasto model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GastoWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gasto.Filter1"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "GastoController.find"
+            }
+        },
+        "/ingresos/count": {
+            "get": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "count",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Ingreso.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Ingreso>"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "IngresoController.count"
+            }
+        },
+        "/ingresos/{id}/usuarios": {
+            "post": {
+                "x-controller-name": "IngresoUsuarioController",
+                "x-operation-name": "create",
+                "tags": [
+                    "IngresoUsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewUsuarioInIngreso"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "IngresoUsuarioController.create"
+            },
+            "patch": {
+                "x-controller-name": "IngresoUsuarioController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "IngresoUsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso.Usuario PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Usuario.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Usuario>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UsuarioPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "IngresoUsuarioController.patch"
+            },
+            "get": {
+                "x-controller-name": "IngresoUsuarioController",
+                "x-operation-name": "find",
+                "tags": [
+                    "IngresoUsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Ingreso has many Usuario",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Usuario"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "IngresoUsuarioController.find"
+            },
+            "delete": {
+                "x-controller-name": "IngresoUsuarioController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "IngresoUsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso.Usuario DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Usuario.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Usuario>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "IngresoUsuarioController.delete"
+            }
+        },
+        "/ingresos/{id}": {
+            "put": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Ingreso PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingreso"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "IngresoController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Ingreso PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IngresoPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "IngresoController.updateById"
+            },
+            "get": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IngresoWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingreso.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "IngresoController.findById"
+            },
+            "delete": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Ingreso DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "IngresoController.deleteById"
+            }
+        },
+        "/ingresos": {
+            "post": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "create",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingreso"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewIngreso"
+                            }
+                        }
+                    }
+                },
+                "operationId": "IngresoController.create"
+            },
+            "patch": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Ingreso.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Ingreso>"
+                            }
+                        }
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IngresoPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "IngresoController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "IngresoController",
+                "x-operation-name": "find",
+                "tags": [
+                    "IngresoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Ingreso model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/IngresoWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingreso.Filter1"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "IngresoController.find"
+            }
+        },
+        "/ping": {
+            "get": {
+                "x-controller-name": "PingController",
+                "x-operation-name": "ping",
+                "tags": [
+                    "PingController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ping Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PingResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "operationId": "PingController.ping"
+            }
+        },
+        "/usuarios/count": {
+            "get": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "count",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario model count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Usuario.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Usuario>"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "UsuarioController.count"
+            }
+        },
+        "/usuarios/{id}/gastos": {
+            "post": {
+                "x-controller-name": "UsuarioGastoController",
+                "x-operation-name": "create",
+                "tags": [
+                    "UsuarioGastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gasto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewGastoInUsuario"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "UsuarioGastoController.create"
+            },
+            "patch": {
+                "x-controller-name": "UsuarioGastoController",
+                "x-operation-name": "patch",
+                "tags": [
+                    "UsuarioGastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario.Gasto PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Gasto.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Gasto>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GastoPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "UsuarioGastoController.patch"
+            },
+            "get": {
+                "x-controller-name": "UsuarioGastoController",
+                "x-operation-name": "find",
+                "tags": [
+                    "UsuarioGastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Usuario has many Gasto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Gasto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": true
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "UsuarioGastoController.find"
+            },
+            "delete": {
+                "x-controller-name": "UsuarioGastoController",
+                "x-operation-name": "delete",
+                "tags": [
+                    "UsuarioGastoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario.Gasto DELETE success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "title": "Gasto.WhereFilter",
+                                    "additionalProperties": true,
+                                    "x-typescript-type": "@loopback/repository#Where<Gasto>"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "UsuarioGastoController.delete"
+            }
+        },
+        "/usuarios/{id}/ingreso": {
+            "get": {
+                "x-controller-name": "UsuarioIngresoController",
+                "x-operation-name": "getIngreso",
+                "tags": [
+                    "UsuarioIngresoController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingreso belonging to Usuario",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Ingreso"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "UsuarioIngresoController.getIngreso"
+            }
+        },
+        "/usuarios/{id}": {
+            "put": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "replaceById",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Usuario PUT success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "UsuarioController.replaceById"
+            },
+            "patch": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "updateById",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Usuario PATCH success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UsuarioPartial"
+                            }
+                        }
+                    },
+                    "x-parameter-index": 1
+                },
+                "operationId": "UsuarioController.updateById"
+            },
+            "get": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "findById",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UsuarioWithRelations"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Usuario.Filter"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "operationId": "UsuarioController.findById"
+            },
+            "delete": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "deleteById",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "Usuario DELETE success"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }],
+                "operationId": "UsuarioController.deleteById"
+            }
+        },
+        "/usuarios": {
+            "post": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "create",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario model instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewUsuario"
+                            }
+                        }
+                    }
+                },
+                "operationId": "UsuarioController.create"
+            },
+            "patch": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "updateAll",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario PATCH success count",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/loopback.Count"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "where",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "title": "Usuario.WhereFilter",
+                                "additionalProperties": true,
+                                "x-typescript-type": "@loopback/repository#Where<Usuario>"
+                            }
+                        }
+                    }
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UsuarioPartial"
+                            }
+                        }
+                    }
+                },
+                "operationId": "UsuarioController.updateAll"
+            },
+            "get": {
+                "x-controller-name": "UsuarioController",
+                "x-operation-name": "find",
+                "tags": [
+                    "UsuarioController"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Array of Usuario model instances",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UsuarioWithRelations"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [{
+                    "name": "filter",
+                    "in": "query",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario.Filter1"
+                            }
+                        }
+                    }
+                }],
+                "operationId": "UsuarioController.find"
+            }
+        }
+    },
+    "servers": [{
+        "url": "/"
+    }],
+    "components": {
+        "schemas": {
+            "Usuario": {
+                "title": "Usuario",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "ingresoId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre"
+                ],
+                "additionalProperties": false
+            },
+            "Gasto": {
+                "title": "Gasto",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion"
+                ],
+                "additionalProperties": false
+            },
+            "NewGasto": {
+                "title": "NewGasto",
+                "type": "object",
+                "description": "(tsType: Omit<Gasto, 'id'>, schemaOptions: { title: 'NewGasto', exclude: [ 'id' ] })",
+                "properties": {
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Gasto, 'id'>"
+            },
+            "IngresoWithRelations": {
+                "title": "IngresoWithRelations",
+                "type": "object",
+                "description": "(tsType: IngresoWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    },
+                    "usuarios": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UsuarioWithRelations"
+                        }
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion",
+                    "usuarioId"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "IngresoWithRelations"
+            },
+            "UsuarioWithRelations": {
+                "title": "UsuarioWithRelations",
+                "type": "object",
+                "description": "(tsType: UsuarioWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "ingresoId": {
+                        "type": "string"
+                    },
+                    "ingreso": {
+                        "$ref": "#/components/schemas/IngresoWithRelations"
+                    },
+                    "gastos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GastoWithRelations"
+                        }
+                    }
+                },
+                "required": [
+                    "nombre"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "UsuarioWithRelations"
+            },
+            "GastoWithRelations": {
+                "title": "GastoWithRelations",
+                "type": "object",
+                "description": "(tsType: GastoWithRelations, schemaOptions: { includeRelations: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    },
+                    "usuario": {
+                        "$ref": "#/components/schemas/UsuarioWithRelations"
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "GastoWithRelations"
+            },
+            "GastoPartial": {
+                "title": "GastoPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Gasto>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Gasto>"
+            },
+            "NewUsuarioInIngreso": {
+                "title": "NewUsuarioInIngreso",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Usuario, 'id'>, 'ingresoId'>, schemaOptions: { title: 'NewUsuarioInIngreso', exclude: [ 'id' ], optional: [ 'ingresoId' ] })",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "ingresoId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Usuario, 'id'>, 'ingresoId'>"
+            },
+            "UsuarioPartial": {
+                "title": "UsuarioPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Usuario>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "ingresoId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Usuario>"
+            },
+            "Ingreso": {
+                "title": "Ingreso",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion",
+                    "usuarioId"
+                ],
+                "additionalProperties": false
+            },
+            "NewIngreso": {
+                "title": "NewIngreso",
+                "type": "object",
+                "description": "(tsType: Omit<Ingreso, 'id'>, schemaOptions: { title: 'NewIngreso', exclude: [ 'id' ] })",
+                "properties": {
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion",
+                    "usuarioId"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Ingreso, 'id'>"
+            },
+            "IngresoPartial": {
+                "title": "IngresoPartial",
+                "type": "object",
+                "description": "(tsType: Partial<Ingreso>, schemaOptions: { partial: true })",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "Partial<Ingreso>"
+            },
+            "NewGastoInUsuario": {
+                "title": "NewGastoInUsuario",
+                "type": "object",
+                "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Gasto, 'id'>, 'usuarioId'>, schemaOptions: { title: 'NewGastoInUsuario', exclude: [ 'id' ], optional: [ 'usuarioId' ] })",
+                "properties": {
+                    "fecha": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valor": {
+                        "type": "boolean"
+                    },
+                    "descripcion": {
+                        "type": "string"
+                    },
+                    "usuarioId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fecha",
+                    "valor",
+                    "descripcion"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Gasto, 'id'>, 'usuarioId'>"
+            },
+            "NewUsuario": {
+                "title": "NewUsuario",
+                "type": "object",
+                "description": "(tsType: Omit<Usuario, 'id'>, schemaOptions: { title: 'NewUsuario', exclude: [ 'id' ] })",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "ingresoId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "nombre"
+                ],
+                "additionalProperties": false,
+                "x-typescript-type": "Omit<Usuario, 'id'>"
+            },
+            "loopback.Count": {
+                "type": "object",
+                "title": "loopback.Count",
+                "x-typescript-type": "@loopback/repository#Count",
+                "properties": {
+                    "count": {
+                        "type": "number"
+                    }
+                }
+            },
+            "Gasto.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Gasto.ScopeFilter"
+            },
+            "Gasto.IncludeFilter.Items": {
+                "title": "Gasto.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Gasto.ScopeFilter"
+                    }
+                }
+            },
+            "Gasto.Filter": {
+                "type": "object",
+                "title": "Gasto.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "fecha": {
+                                        "type": "boolean"
+                                    },
+                                    "valor": {
+                                        "type": "boolean"
+                                    },
+                                    "descripcion": {
+                                        "type": "boolean"
+                                    },
+                                    "usuarioId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "fecha",
+                                        "valor",
+                                        "descripcion",
+                                        "usuarioId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Gasto.Fields"
+                    },
+                    "include": {
+                        "title": "Gasto.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Gasto.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Gasto>"
+            },
+            "Gasto.Filter1": {
+                "type": "object",
+                "title": "Gasto.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Gasto.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "fecha": {
+                                        "type": "boolean"
+                                    },
+                                    "valor": {
+                                        "type": "boolean"
+                                    },
+                                    "descripcion": {
+                                        "type": "boolean"
+                                    },
+                                    "usuarioId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "fecha",
+                                        "valor",
+                                        "descripcion",
+                                        "usuarioId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Gasto.Fields"
+                    },
+                    "include": {
+                        "title": "Gasto.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Gasto.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Gasto>"
+            },
+            "Ingreso.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Ingreso.ScopeFilter"
+            },
+            "Ingreso.IncludeFilter.Items": {
+                "title": "Ingreso.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Ingreso.ScopeFilter"
+                    }
+                }
+            },
+            "Ingreso.Filter": {
+                "type": "object",
+                "title": "Ingreso.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "fecha": {
+                                        "type": "boolean"
+                                    },
+                                    "valor": {
+                                        "type": "boolean"
+                                    },
+                                    "descripcion": {
+                                        "type": "boolean"
+                                    },
+                                    "usuarioId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "fecha",
+                                        "valor",
+                                        "descripcion",
+                                        "usuarioId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Ingreso.Fields"
+                    },
+                    "include": {
+                        "title": "Ingreso.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Ingreso.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Ingreso>"
+            },
+            "Ingreso.Filter1": {
+                "type": "object",
+                "title": "Ingreso.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Ingreso.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "fecha": {
+                                        "type": "boolean"
+                                    },
+                                    "valor": {
+                                        "type": "boolean"
+                                    },
+                                    "descripcion": {
+                                        "type": "boolean"
+                                    },
+                                    "usuarioId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "fecha",
+                                        "valor",
+                                        "descripcion",
+                                        "usuarioId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Ingreso.Fields"
+                    },
+                    "include": {
+                        "title": "Ingreso.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Ingreso.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Ingreso>"
+            },
+            "PingResponse": {
+                "type": "object",
+                "title": "PingResponse",
+                "properties": {
+                    "greeting": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "properties": {
+                            "Content-Type": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                }
+            },
+            "Usuario.ScopeFilter": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {},
+                                "additionalProperties": true
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "uniqueItems": true
+                            }
+                        ]
+                    },
+                    "include": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "title": "Usuario.ScopeFilter"
+            },
+            "Usuario.IncludeFilter.Items": {
+                "title": "Usuario.IncludeFilter.Items",
+                "type": "object",
+                "properties": {
+                    "relation": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/Usuario.ScopeFilter"
+                    }
+                }
+            },
+            "Usuario.Filter": {
+                "type": "object",
+                "title": "Usuario.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nombre": {
+                                        "type": "boolean"
+                                    },
+                                    "ingresoId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nombre",
+                                        "ingresoId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Usuario.Fields"
+                    },
+                    "include": {
+                        "title": "Usuario.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Usuario.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Usuario>"
+            },
+            "Usuario.Filter1": {
+                "type": "object",
+                "title": "Usuario.Filter",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "example": 100
+                    },
+                    "skip": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "order": {
+                        "oneOf": [{
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "where": {
+                        "title": "Usuario.WhereFilter",
+                        "type": "object",
+                        "additionalProperties": true
+                    },
+                    "fields": {
+                        "oneOf": [{
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "boolean"
+                                    },
+                                    "nombre": {
+                                        "type": "boolean"
+                                    },
+                                    "ingresoId": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "id",
+                                        "nombre",
+                                        "ingresoId"
+                                    ],
+                                    "example": "id"
+                                },
+                                "uniqueItems": true
+                            }
+                        ],
+                        "title": "Usuario.Fields"
+                    },
+                    "include": {
+                        "title": "Usuario.IncludeFilter",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [{
+                                    "$ref": "#/components/schemas/Usuario.IncludeFilter.Items"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false,
+                "x-typescript-type": "@loopback/repository#Filter<Usuario>"
+            }
+        }
+    }
+}
